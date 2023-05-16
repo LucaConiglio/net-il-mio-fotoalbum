@@ -1,0 +1,23 @@
+﻿@model Photo
+
+
+
+<div class="container mt-5">
+    <h1 class="mb-4">@Model.Title</h1>
+
+    <div class="row">
+        <div class="col-md-8">
+            <img class="img-fluid rounded" src="@Model.Image" alt="@Model.Title">
+        </div>
+        <div class="col-md-4">
+            <h4>Categorie</h4>
+            <ul>
+                @foreach (var category in Model.Categories)
+                {
+                    <li>@category.Title</li>
+                }
+            </ul>
+            <p>@Model.Description</p>
+        </div>
+    </div>
+</div>

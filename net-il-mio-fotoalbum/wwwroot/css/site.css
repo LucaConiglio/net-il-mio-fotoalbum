@@ -14,5 +14,27 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: black;
+    color: whitesmoke;
+    
+}
+#imagePrincipal {
+    width: 100vw;
+    height: 60vh;
+}
+
+#miodiv {
+    background-image: url("https://www.ionos.it/digitalguide/fileadmin/DigitalGuide/Teaser/fotograf-werden_558890911.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 80vh;
+}
+#privacyContainer {
+    background: linear-gradient(135deg, rgba(255,255,255, 0.1), rgba(255,255,255,0));
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur( 50px);
+    box-shadow: 0  8px 32px 0 rgba( 0, O, O, 0.37);
+    border: 1px solid rgba( 255, 255, 255, 0.18); 
+    border-radius: 32px;
 }

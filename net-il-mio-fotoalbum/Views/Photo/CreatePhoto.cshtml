@@ -1,0 +1,43 @@
+﻿@model PhotoFormModel
+
+<div class="container">
+    <form asp-controller="Photo" asp-action="Create" method="post">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <strong>Titolo:</strong>
+            <input asp-for="Photo.Title" class="d-block w-100" />
+            <span asp-validation-for="Photo.Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <strong>Descrizione:</strong>
+            <input asp-for="Photo.Description" class="d-block w-100" />
+            <span asp-validation-for="Photo.Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <strong>Immagine:</strong>
+            <input asp-for="Photo.Image" class="d-block w-100" />
+            <span asp-validation-for="Photo.Image" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="isVisible" name="Visible" checked="@Model.Photo.Visible" />
+                <label class="form-check-label" for="Visible">Visibile</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <strong>Ingredienti:</strong>
+            <select asp-for="SelectedCategories"
+                    multiple="multiple"
+                    size="10"
+                    class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
+                    asp-items="@Model.Categories">
+            </select>
+        </div>
+        <div class="text-end">
+            <input type="submit" class="btn btn-small btn-info" value="Salva">
+        </div>
+    </form>
+
+    <di class="mb-3"><a class="btn btn-info" href="@Url.Action("Index", "Photo")">Return Index</a></di>
+</div>

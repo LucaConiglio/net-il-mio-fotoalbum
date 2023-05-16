@@ -1,0 +1,62 @@
+﻿@model List<Photo>
+@{
+
+}
+<div class="container text-center">
+    <h1 class="display-4 fst-italic text-info fw-bold mb-5">Foto</h1>
+
+    <div class="row mb-4">
+        <div class="col-md-8"></div>
+        <div class="col-md-4 text-right">
+            <form asp-action="Index" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="searchString" placeholder="Cerca per nome" value="@ViewBag.SearchString">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        <a class="btn btn-dark" href="@Url.Action("Create", "Photo")">Aggiungi Foto</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        @if ((Model.Count <= 0) || (Model == null))
+        {
+            <div><h2>Non ci sono Photo Disponibili</h2></div>
+        }
+        else
+        {
+        @foreach (var photo in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img class="card-img-top" src="@photo.Image" alt="@photo.Title" />
+                    <div class="card-body">
+                        <h5 class="card-title">@photo.Title</h5>
+                        <p class="card-text">@photo.Description</p>
+                        <div>
+                            <strong>Categorie:</strong>
+                            @foreach (var category in photo.Categories)
+                            {
+                                <a href="@Url.Action("Index", "Photos", new { categoryId = category.Id })">@category.Title</a>
+                                if (category != photo.Categories.Last())
+                                {
+                                    <span>, </span>
+                                }
+                            }
+                        </div>
+                        <a href="@Url.Action("Details", "Photos", new { id = photo.Id })" class="btn btn-primary mt-2">Dettagli</a>
+                        @*<form asp-controller="Pizza" asp-action="Delete" asp-route-id="@Photo.Id" method="post">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-dark">Delete</button>
+                          </form>*@
+                    </div>
+                </div>
+            </div>
+        }
+        }
+    </div>
+                        @*@if (User.IsInRole("Admin"))*@                     
+                           @* <a class="btn btn-warning" href="@Url.Action("Update", "Photo", new {id=item.Id})">Edit</a>*@
+</div>
