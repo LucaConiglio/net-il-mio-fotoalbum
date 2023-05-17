@@ -20,18 +20,20 @@
         </div>
         <div class="form-group">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="isVisible" name="Visible" checked="@Model.Photo.Visible" />
-                <label class="form-check-label" for="Visible">Visibile</label>
+                <label class="form-check-label" for="Visible">
+                    <input class="form-check-input" asp-for="Photo.Visible" /> @Html.DisplayNameFor(m => m.Photo.Visible)
+                </label>
             </div>
         </div>
 
         <div class="mb-3">
-            <strong>Ingredienti:</strong>
+            <strong>Categorie:</strong>
             <select asp-for="SelectedCategories"
                     multiple="multiple"
                     size="10"
                     class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
                     asp-items="@Model.Categories">
+                    <option></option>
             </select>
         </div>
         <div class="text-end">

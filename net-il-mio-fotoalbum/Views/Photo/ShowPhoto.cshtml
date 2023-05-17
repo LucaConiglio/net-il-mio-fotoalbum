@@ -2,8 +2,8 @@
 
 
 
-<div class="container mt-5">
-    <h1 class="mb-4">@Model.Title</h1>
+<div class="container pt-5">
+    <h1 class="mb-4">Titolo: @Model.Title</h1>
 
     <div class="row">
         <div class="col-md-8">
@@ -17,7 +17,9 @@
                     <li>@category.Title</li>
                 }
             </ul>
+            <h5>Descrizione: </h5>
             <p>@Model.Description</p>
+            <di class="mb-3"><a class="btn btn-info" href="@Url.Action("Index", "Photo")">Ritorna all'Index</a></di>
         </div>
     </div>
 </div>

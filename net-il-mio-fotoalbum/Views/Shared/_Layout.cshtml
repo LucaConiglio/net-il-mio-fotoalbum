@@ -28,15 +28,29 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Photo" asp-action="Index">All Photo</a>
                         </li>
+                        @if (User.IsInRole("ADMIN"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Categories")">Categorie</a>
+                            </li>
+                        }
+                        @*<li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="@Url.Action("Index", "User")">Admin</a>
+                        </li>*@
+                        <!-- code omitted -->
+                        <partial name="_LoginPartial" />
                     </ul>
                 </div>
+                
             </div>
         </nav>
     </header>
     <div>
         <main role="main" class="pb-3">
             <div id="miodiv">
-                @RenderBody()
+                <div class="container">
+                    @RenderBody()
+                </div>
             </div>
             
         </main>

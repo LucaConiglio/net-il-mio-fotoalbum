@@ -1,3 +1,9 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using net_il_mio_fotoalbum.Models;
+using Microsoft.EntityFrameworkCore;
+using net_il_mio_fotoalbum.Areas.Identity.Data;
+
 namespace net_il_mio_fotoalbum
 {
     public class Program
@@ -5,7 +11,13 @@ namespace net_il_mio_fotoalbum
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+                        var connectionString = builder.Configuration.GetConnectionString("ProfileContextConnection") ?? throw new InvalidOperationException("Connection string 'ProfileContextConnection' not found.");
 
+            builder.Services.AddDbContext<FotoContext>();
+
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<FotoContext>();
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
@@ -21,14 +33,17 @@ namespace net_il_mio_fotoalbum
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.MapRazorPages();
 
             app.Run();
         }

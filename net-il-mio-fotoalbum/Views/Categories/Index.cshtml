@@ -1,0 +1,27 @@
+﻿@model IEnumerable<net_il_mio_fotoalbum.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="col-12 m-auto py-5 px-5" id="privacyContainer">
+    <h1>Index</h1>
+    <a class="btn btn-dark" href="@Url.Action("Create", "Categories")">Aggiungi Categoria</a>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <h4>@Html.DisplayNameFor(model => model.Title)</h4>
+    <div class="overflow-hidden">
+        <div class="d-flex gap-2 flex-wrap">
+                @foreach (var item in Model) {
+                <div class="me-2">
+                    @Html.DisplayFor(modelItem => item.Title)
+                      
+                      <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                      <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                      <a asp-action="Delete" asp-route-id="@item.Id">Delete |</a>
+                </div>
+            }
+            
+        </div>
+    </div>
+</div>

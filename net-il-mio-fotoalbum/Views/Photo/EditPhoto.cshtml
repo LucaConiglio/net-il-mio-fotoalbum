@@ -1,0 +1,56 @@
+﻿@model PhotoFormModel
+<div class="py-5 px-5">
+    <div class="col-8 m-auto py-5 px-5" id="privacyContainer">
+        <form asp-controller="Photo" asp-action="Update" method="post">
+            @Html.AntiForgeryToken()
+            <div class="mb-3">
+                <strong>Titolo:</strong>
+                <input asp-for="Photo.Title" class="d-block w-100" />
+                <span asp-validation-for="Photo.Title" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <strong>Descrizione:</strong>
+                <input asp-for="Photo.Description" class="d-block w-100" />
+                <span asp-validation-for="Photo.Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <strong>Immagine:</strong>
+                <input asp-for="Photo.Image" class="d-block w-100" />
+                <span asp-validation-for="Photo.Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label" for="Visible">
+                        <input class="form-check-input" asp-for="Photo.Visible"/> @Html.DisplayNameFor(m => m.Photo.Visible)
+                    </label>
+                </div>
+            </div>
+    
+            <div class="mb-3">
+                <strong>Category:</strong>
+                <div class="d-flex gap-1 flex-wrap justify-content-around">
+                    @foreach (var category in Model.Categories)
+                    {
+                        <div>
+                            <input type="checkbox" id="@category.Value" name="SelectedCategories" value="@category.Value" checked="@Model.SelectedCategories.Contains(category.Value)" />
+                            <label for="@category.Value">@category.Text</label>
+                        </div>
+                    }
+                </div>
+               @*<strong>Categorie:</strong>
+                <select asp-for="SelectedCategories"
+                        multiple="multiple"
+                        size="10"
+                        class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
+                        asp-items="@Model.Categories">
+                </select>*@
+            </div>
+            <div class="d-flex justify-content-between">
+                <input type="submit" class="btn btn-warning" value="Salva">
+                <a class="btn btn-info" href="@Url.Action("Index", "Photo")">Return Index</a>
+            </div>
+        </form>
+    
+       
+    </div>
+</div>
