@@ -27,16 +27,7 @@ namespace net_il_mio_fotoalbum.Controllers
             return View(photos);
         }
 
-        public IActionResult Form(Message data)
-        {
-            using var db = new FotoContext();
-
-            
-
-
-
-            return View(data);
-        }
+        
 
 
         //******************************************************************************** GET DETAILS

@@ -1,0 +1,30 @@
+﻿<div id="privacyContainer" class="pt-2 pb-4 px-5 mt-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="mt-3 mb-3">Lista Foto</h1>
+            <div>
+                <input type="text" id="search" class="form-control" placeholder="Cerca per titolo" onkeyup="loadPhoto(this.value)" />
+            </div>
+        </div>
+    
+        <div id="photo-table">
+            <table class="table -list-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Immagine</th>
+                        <th>Titolo</th>
+                        <th>Descrizione</th>
+                    </tr>
+                </thead>
+                <tbody id="photo">
+                    <!-- qui ci andranno i <tr> contenenti i post -->
+    
+                </tbody>
+            </table>
+        </div>
+        <div id="no-photo" class="d-none">
+            <h2>Non ci sono Foto da mostrare</h2>
+        </div>
+    </div>
+</div>
